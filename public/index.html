@@ -1,18 +1,60 @@
+// public/index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sample Node.js UI</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Charges Comparison</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>🚀 Hello from Node.js!</h1>
-	<h1>🚀 Hello Anwesha</h1>
-    <p>This is a simple UI served via Express.</p>
-	<p>How are you doing.</p>
-    <button onclick="showAlert()">Click Me</button>
-  </div>
-  <script src="script.js"></script>
+    <div class="container">
+        <header>
+            <h1>🏥 Indian Hospital Charges Comparison</h1>
+            <p>Compare daily charges for Beds, Emergency, and OPD services</p>
+        </header>
+
+        <div class="controls">
+            <div class="service-selector">
+                <label for="serviceType">Select Service:</label>
+                <select id="serviceType">
+                    <option value="bed">Bed Charges (per day)</option>
+                    <option value="emergency">Emergency Charges</option>
+                    <option value="opd">OPD Charges</option>
+                </select>
+                <button onclick="loadComparison()">Compare</button>
+            </div>
+            
+            <div class="add-hospital-btn">
+                <button onclick="toggleAddForm()">+ Add Hospital</button>
+            </div>
+        </div>
+
+        <div id="addHospitalForm" class="add-form hidden">
+            <h3>Add New Hospital</h3>
+            <form onsubmit="addHospital(event)">
+                <input type="text" id="hospitalName" placeholder="Hospital Name" required>
+                <input type="text" id="hospitalCity" placeholder="City" required>
+                <input type="text" id="hospitalState" placeholder="State" required>
+                <input type="number" id="bedCharge" placeholder="Bed Charge (₹)" required>
+                <input type="number" id="emergencyCharge" placeholder="Emergency Charge (₹)" required>
+                <input type="number" id="opdCharge" placeholder="OPD Charge (₹)" required>
+                <button type="submit">Add Hospital</button>
+                <button type="button" onclick="toggleAddForm()">Cancel</button>
+            </form>
+        </div>
+
+        <div class="results">
+            <div id="comparisonResults" class="comparison-grid">
+                <!-- Results will be populated here -->
+            </div>
+        </div>
+
+        <div class="statistics" id="statistics">
+            <!-- Statistics will be populated here -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

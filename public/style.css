@@ -1,27 +1,248 @@
+// public/style.css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f9;
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
 }
+
 .container {
-  background: white;
-  padding: 20px 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
+
+header {
+    background: linear-gradient(135deg, #2196F3, #21CBF3);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: #f8f9fa;
+    border-bottom: 2px solid #e9ecef;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.service-selector {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.service-selector label {
+    font-weight: 600;
+    color: #333;
+}
+
+select, button, input {
+    padding: 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+select:focus, input:focus {
+    outline: none;
+    border-color: #2196F3;
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+}
+
 button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  border: none;
-  background: #007bff;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
+    background: #2196F3;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
 }
+
 button:hover {
-  background: #0056b3;
+    background: #1976D2;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+}
+
+.add-form {
+    background: #fff;
+    padding: 25px 30px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.add-form.hidden {
+    display: none;
+}
+
+.add-form h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.add-form form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.add-form input {
+    width: 100%;
+}
+
+.results {
+    padding: 30px;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.hospital-card {
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.hospital-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-color: #2196F3;
+}
+
+.hospital-card.cheapest {
+    border-color: #4CAF50;
+    background: linear-gradient(135deg, #C8E6C9, #E8F5E8);
+}
+
+.hospital-card.most-expensive {
+    border-color: #FF5722;
+    background: linear-gradient(135deg, #FFCDD2, #FFEBEE);
+}
+
+.hospital-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.hospital-location {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.charge-amount {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #2196F3;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.charge-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+}
+
+.badge.cheapest {
+    background: #4CAF50;
+}
+
+.badge.expensive {
+    background: #FF5722;
+}
+
+.statistics {
+    background: #f8f9fa;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid #e9ecef;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #2196F3;
+}
+
+.stat-label {
+    color: #666;
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .service-selector {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
 }
